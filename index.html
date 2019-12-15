@@ -8,11 +8,44 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
-            <div class="jumbotron">
-        <h1 class="display-4">Todo List</h1>
-        <button id="displayTodosButton" type="button" class="btn btn-primary">Display Todos</button>
-        <button type="button" class="btn btn-warning">Toggle All</button>
+        <div class="jumbotron">
+            <h1 class="display-4">Todo List</h1>
+            <div>
+                <button id="displayTodosButton" type="button" class="btn btn-primary">Display Todos</button>
+                <button id="toggleAll" type="button" class="btn btn-warning">Toggle All</button>
             </div>
+            <div class="input-group mb-3">
+                    <input id="addTodoTextInput" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                    <button id="addTodoButton" class="btn btn-outline-secondary" type="button" id="button-addon2">Add</button>
+                    </div>
+                </div>
+
+            <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <button id="changeTodoButton" class="btn btn-outline-secondary" type="button" id="button-addon1">Change Todo</button>
+                    </div>
+                    <input id="changeTodoPositionInput" type="number" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <input id="changeTodoTextInput" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <button id="deleteTodoButton" class="btn btn-outline-secondary" type="button" id="button-addon1">Delete Todo</button>
+                    </div>
+                    <input id="deleteTodoPositionInput" type="number" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                    <button id="toggleCompletedButton" class="btn btn-outline-secondary" type="button" id="button-addon1">Toggle Completed</button>
+                    </div>
+                    <input id="toggleCompletedPositionInput" type="number" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+
+            <ul>
+            </ul>
+        </div>
         <script src="./main.js"></script>
     </body>
 </html>
