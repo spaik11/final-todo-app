@@ -1,9 +1,15 @@
 body {
     padding: 100px;
+    padding-left: 300px;
+    padding-right: 300px;
 }
-
+ 
 li {
     padding: 5px;
+}
+
+button {
+    width: 200px;
 }
 
 .deleteButton {
