@@ -14,5 +14,12 @@ const todoList = {
             }
         }
     },
-
+    addTodo: function(todoText) {
+        this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
+        this.diplayTodos();
+    },
+    
 };
