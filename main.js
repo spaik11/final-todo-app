@@ -1,38 +1,20 @@
 const todoList = {
     todos: [],
-    displayTodos: function() {
-        if (this.todos.length === 0) {
-            console.log('Your todo list is empty!');
-        } else {
-            console.log('My Todos:');
-            for (let i = 0; i < this.todos.length; i++) {
-                if (this.todos[i].completed === true) {
-                    console.log('(x)', this.todos[i].todoText);
-                } else {
-                    console.log('( )', this.todos[i].todoText);
-                }
-            }
-        }
-    },
     addTodo: function(todoText) {
         this.todos.push({
             todoText: todoText,
             completed: false
         });
-        this.displayTodos();
     },
     changeTodo: function(position, todoText) {
         this.todos[position].todoText = todoText;
-        this.displayTodos();
     },
     deleteTodo: function(position) {
         this.todos.splice(position, 1);
-        this.displayTodos();
     },
     toggleCompleted: function(position) {
         const todo = this.todos[position];
         todo.completed = !todo.completed;
-        this.displayTodos();
     },
     toggleAll: function() {
         let totalTodos = this.todos.length;
@@ -53,50 +35,46 @@ const todoList = {
                 this.todos[i].completed = true;
             }
         }
-        this.displayTodos();
     }
 };
 
-const displayTodosButton = document.querySelector('#displayTodosButton');
 const toggleAllButton = document.querySelector('#toggleAll');
 const addTodoTextInput = document.querySelector('#addTodoTextInput');
 const addTodoButton = document.querySelector('#addTodoButton');
 const changeTodoPositionInput = document.querySelector('#changeTodoPositionInput');
 const changeTodoTextInput = document.querySelector('#changeTodoTextInput');
 const changeTodoButton = document.querySelector('#changeTodoButton');
-const deleteTodoButton = document.querySelector('#deleteTodoButton');
-const deleteTodoPositionInput = document.querySelector('#deleteTodoPositionInput');
 const toggleCompletedButton = document.querySelector('#toggleCompletedButton');
 const toggleCompletedPositionInput = document.querySelector('#toggleCompletedPositionInput');
 
 
-displayTodosButton.addEventListener('click', function() {
-    todoList.displayTodos();
-})
-
 toggleAllButton.addEventListener('click', function() {
     todoList.toggleAll();
+    view.displayTodos();
 })
 
 addTodoButton.addEventListener('click', function() {
     todoList.addTodo(addTodoTextInput.value);
     addTodoTextInput.value = '';
+    view.displayTodos();
 })
 
 changeTodoButton.addEventListener('click', function() {
     todoList.changeTodo(Number(changeTodoPositionInput.value), changeTodoTextInput.value);
     changeTodoPositionInput.value = '';
     changeTodoTextInput.value = '';
+    view.displayTodos();
 })
 
-deleteTodoButton.addEventListener('click', function() {
-    todoList.deleteTodo(Number(deleteTodoPositionInput.value))
-    deleteTodoPositionInput.value = '';
-})
+// deleteTodoButton.addEventListener('click', function(position) {
+//     todoList.deleteTodo(position)
+//     view.displayTodos();
+// })
 
 toggleCompletedButton.addEventListener('click', function() {
     todoList.toggleCompleted(Number(toggleCompletedPositionInput.value))
     toggleCompletedPositionInput.value = '';
+    view.displayTodos();
 })
 
 const view = {
@@ -106,8 +84,40 @@ const view = {
 
         for (let i = 0; i < todoList.todos.length; i++) {
             const todoLi = document.createElement('li');
+            let todo = todoList.todos[i]
+            let todoTextWithCompletion = '';
+
+            if (todo.completed) {
+                todoTextWithCompletion = `( x ) ${todo.todoText}`
+            } else {
+                todoTextWithCompletion = `(   ) ${todo.todoText}`
+            }
+
+            todoLi.id = i;
+            todoLi.innerText = todoTextWithCompletion;
+            todoLi.appendChild(this.createDeleteButton())
             todosUl.appendChild(todoLi);
-            
         }
     },
+    createDeleteButton: function() {
+        const createButton = document.createElement('button');
+        createButton.innerText = 'Delete';
+        createButton.className = 'deleteButton';
+
+        return createButton;
+    },
+    setUpEventListeners: function() {
+        const todosUl = document.querySelector('ul');
+        
+        todosUl.addEventListener('click', function(event) {
+            event.target.parentNode.id;
+        
+            const elementClicked = event.target;
+        
+            todoList.deleteTodo(Number(elementClicked.parentNode.id));
+            view.displayTodos();
+        })
+    },
 }
+
+view.setUpEventListeners();
