@@ -13,6 +13,8 @@ I implemented jQuery to the todo app. I used it to change the font color and add
 I faced the following challenges:
 * I can click anywhere on the todo line and the todo deletes. 
 * The color changes when I toggle a todo item.
+* The mouseover jQuery feature doesn't work like expected.
+  
 
 ---
 ### Github 
