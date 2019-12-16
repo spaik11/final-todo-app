@@ -75,7 +75,6 @@ const view = {
         })
     },
 }
-
 view.setUpEventListeners();
 
 const toggleAllButton = document.querySelector('#toggleAll');
@@ -111,3 +110,21 @@ toggleCompletedButton.addEventListener('click', function() {
     toggleCompletedPositionInput.value = '';
     view.displayTodos();
 })
+
+$(function() {
+    $('#toggleAll').click(function() {
+        $('li').css("color", "green");
+    });
+
+    $('button')
+        .css( {backgroundPosition: "0 0"} )
+        .mouseover(function(){
+            $(this).stop().animate({backgroundPosition:"(0 -250px)"}, {duration:500})
+        })
+        .mouseout(function(){
+            $(this).stop().animate({backgroundPosition:"(0 0)"}, {duration:500})
+        })
+
+    $('h1').css('border', 'dotted 3px blue')
+});
+

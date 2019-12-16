@@ -5,6 +5,9 @@ This is my version of the todo app.
 * You can select the items that are completed, along with a toggle all feature.
 * The last feature is that the add todo button will include a delete button for each task.
 
-### Methods and Challenges
-I implemented objects to the todo assignments we learned throughout the term. 
-* 
+### Tools and Challenges
+I implemented jQuery to the todo app. I used it to change the font color and add a hover effect on the buttons. jQuery makes it very easy to manipulate the DOM. 
+---
+I faced the following challenges:
+* I can click anywhere on the todo line and the todo deletes. 
+  
